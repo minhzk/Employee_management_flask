@@ -30,24 +30,24 @@
         <div class="child child5" style="color:rgb(0, 75, 93);"><h3 class="m-2"><i>User : </i></h3></div>
 
         <div class="child child6 container" style="color:rgb(0, 75, 93);">
-          <h3>Login Form</h3>
+          <h3>Login Form {% if loginerror %} {{ loginerror }}  {% endif %}</h3>
           <hr>
-          <form class="p-3">
+          <form class="p-3" action="/login" method="POST">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address / Username</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text" style="color:rgb(0, 75, 93);">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn text-light" style="background-color:rgb(0, 75, 93);">Sign In</button>
           </form>
         </div>
  
         <div class="child child7 fixed-bottom" style="background-color:rgb(0, 75, 93); color:whitesmoke;">
-            <p class="p-3 text-center">copyright &copy; Developed and Mantained by Gurupreeth Singh , Email :- igurupreeth@gmail.com</p>
+            <p class="p-3 text-center">Footer</p>
         </div>
       </div>
 

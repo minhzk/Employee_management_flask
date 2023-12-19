@@ -32,15 +32,15 @@
         <div class="child child6 container" style="color:rgb(0, 75, 93);">
           <h3>Sign Up Form</h3>
           <hr>
-          <form class="p-3">
+          <form class="p-3" action="/register" method="POST">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address / Username</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text" style="color:rgb(0, 75, 93);">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn text-light" style="background-color:rgb(0, 75, 93);">Register</button>
           </form>
