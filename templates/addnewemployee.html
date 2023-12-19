@@ -26,8 +26,11 @@
             <h3 class="m-2">Add New Employee Page</h3>
         </div>
 
-        <div class="child child5" style="color:rgb(0, 75, 93);"><h3 class="m-2"><i>User : </i></h3></div>
-
+        <div class="child child5" style="color:rgb(0, 75, 93);">
+          {% if user %}
+          <h3 class="m-2"><i>User :  {{ user['name'] }}</i></h3>
+          {% endif %}
+        </div>
 
         <div class="child child6left">
             <div class="circledivleft">
@@ -39,32 +42,32 @@
         <div class="child child6 container" style="color:rgb(0, 75, 93);">
             <ul class="nav nav-tabs nav-fill">
                 <li class="nav-item">
-                  <a class="nav-link" style=" background-color:rgb(0, 75, 93); color:whitesmoke;"  href="dashboard.html">View All Employee</a>
+                  <a class="nav-link" style=" background-color:rgb(0, 75, 93); color:whitesmoke;"  href="{{ url_for('dashboard') }}">View All Employee</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" style=" background-color:rgb(0, 75, 93); color:whitesmoke;" href="addnewemployee.html">Add New Employee</a>
+                  <a class="nav-link active" aria-current="page" style=" background-color:rgb(0, 75, 93); color:whitesmoke;" href="{{ url_for('addnewemployee') }}">Add New Employee</a>
                 </li>
               </ul>
 
               <div class="table-responsive-lg caption-top">
                 <caption><h3>ADD NEW EMPLOYEES</h3></caption>
                 <hr>
-                <form class="p-3">
+                <form class="p-3" action="/addnewemployee" method="POST">
                     <div class="mb-2">
                       <label for="name" class="form-label">Name</label>
-                      <input type="text" class="form-control" id="name">
+                      <input type="text" name="name" class="form-control" id="name">
                     </div>
                     <div class="mb-2">
                       <label for="email" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="email">
+                      <input type="email" name="email" class="form-control" id="email">
                     </div>
                     <div class="mb-2">
-                        <label for="name" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="name">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="phone">
                       </div>
                       <div class="mb-2">
-                        <label for="email" class="form-label">Address</label>
-                        <input type="email" class="form-control" id="email">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" name="address"  class="form-control" id="address">
                       </div>
                     <button type="submit" class="btn text-light m-3" style="background-color:rgb(0, 75, 93);">Add Employee</button>
                   </form>

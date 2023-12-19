@@ -26,8 +26,11 @@
           <h3 class="m-2">Home Page</h3>
       </div>
 
-      <div class="child child5" style="color:rgb(0, 75, 93);"><h3 class="m-2"><i>User : </i></h3></div>
-
+      <div class="child child5" style="color:rgb(0, 75, 93);">
+        {% if user %}
+        <h3 class="m-2"><i>User :  {{ user['name'] }}</i></h3>
+        {% endif %}
+      </div>
         <div class="child child6 container">
             <div class="centercontent">
                 <div class="textcontent">
