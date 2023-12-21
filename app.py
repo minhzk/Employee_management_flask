@@ -67,7 +67,10 @@ def register():
 @app.route('/dashboard')
 def dashboard():
     user = get_current_user()
-    return render_template('dashboard.html', user = user)
+    db = get_database()
+    emp_cur = db.execute('select * from emp')
+    allemp = emp_cur.fetchall()
+    return render_template('dashboard.html', user = user, allemp = allemp)
 
 @app.route('/addnewemployee', methods = ['POST', 'GET'])
 def addnewemployee():

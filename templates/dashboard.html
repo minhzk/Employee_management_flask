@@ -61,28 +61,18 @@
                         </tr>
                       </thead>
                       <tbody>
+                        {% for emp in allemp %}
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>Mark</td>
+                          <th scope="row">{{ emp['empid'] }}</th>
+                          <td>{{ emp['name'] }}</td>
+                          <td>{{ emp['email'] }}</td>
+                          <td>{{ emp['phone'] }}</td>
+                          <td>{{ emp['address'] }}</td>
                           <td><button class="btn btn-sm" style="background-color:rgb(0, 75, 93); color:whitesmoke;" href="#">Update</button></td>
                           <td><button class="btn btn-sm" style="background-color:rgb(0, 75, 93); color:whitesmoke;" href="#">Delete</button></td>
                           <td><button class="btn btn-sm" style="background-color:rgb(0, 75, 93); color:whitesmoke;" href="#">View Full Profile</button></td>
                         </tr>
-                        <tr>
-
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>Mark</td>
-                          <td><button class="btn btn-sm" style="background-color:rgb(0, 75, 93); color:whitesmoke;" href="#">Update</button></td>
-                          <td><button class="btn btn-sm" style="background-color:rgb(0, 75, 93); color:whitesmoke;" href="#">Delete</button></td>
-                          <td><button class="btn btn-sm" style="background-color:rgb(0, 75, 93); color:whitesmoke;" href="#">View Full Profile</button></td>
-                        </tr>
+                        {% endfor %}
                       </tbody>
                 </table>
               </div>
