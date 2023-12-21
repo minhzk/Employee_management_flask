@@ -86,10 +86,13 @@ def addnewemployee():
         return redirect(url_for('dashboard'))
     return render_template('addnewemployee.html', user = user)
 
-@app.route('/singleemployeeprofile')
-def singleemployeeprofile():
+@app.route('/singleemployeeprofile/<int:empid>')
+def singleemployeeprofile(empid):
     user = get_current_user()
-    return render_template('singleemployeeprofile.html', user = user)
+    db = get_database()
+    emp_cur = db.execute('select * from emp where empid = ?', [empid])
+    single_emp = emp_cur.fetchone()
+    return render_template('singleemployeeprofile.html', user = user, single_emp = single_emp)
 
 @app.route('/updateemployee')
 def updateemployee():
