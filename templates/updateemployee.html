@@ -40,37 +40,43 @@
               </div>
         </div>
 
-        <div class="child child6" style="color:rgb(0, 75, 93);">
+        <div class="child child6 container" style="color:rgb(0, 75, 93);">
             <ul class="nav nav-tabs nav-fill mb-3">
                 <li class="nav-item">
-                  <a class="nav-link" style=" background-color:rgb(0, 75, 93); color:whitesmoke;"  href="dashboard.html">View All Employee</a>
+                  <a class="nav-link" style=" background-color:rgb(0, 75, 93); color:whitesmoke;"  href="{{ url_for('dashboard') }}">View All Employee</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" style=" background-color:rgb(0, 75, 93); color:whitesmoke;" href="addnewemployee.html">Add New Employee</a>
+                  <a class="nav-link" style=" background-color:rgb(0, 75, 93); color:whitesmoke;" href="{{ url_for('addnewemployee') }}">Add New Employee</a>
                 </li>
               </ul>
               <div class="table-responsive-lg caption-top">
                 <caption><h3>UPDATE EMPLOYEES</h3></caption>
                  <hr>
-                <form class="p-3">
+                 {% if single_emp %}
+                <form class="p-3" action="/updateemployee" method="POST">
+                    <div class="mb-2">
+                      <label for="empid" class="form-label">Employee ID</label>
+                      <input type="text" class="form-control" id="empid" value="{{single_emp['empid']}}" name="empid" readonly>
+                    </div>
                     <div class="mb-2">
                       <label for="name" class="form-label">Name</label>
-                      <input type="text" class="form-control" id="name">
+                      <input type="text" class="form-control" id="name" value="{{single_emp['name']}}" name="name">
                     </div>
                     <div class="mb-2">
                       <label for="email" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="email">
+                      <input type="email" class="form-control" id="email"  value="{{single_emp['email']}}" name="email">
                     </div>
                     <div class="mb-2">
-                        <label for="name" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="phone">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone"  value="{{single_emp['phone']}}" name="phone">
                       </div>
                       <div class="mb-2">
-                        <label for="email" class="form-label">Address</label>
-                        <input type="email" class="form-control" id="phone">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address"  value="{{single_emp['address']}}" name="address">
                       </div>
             <button type="submit" class="btn text-light m-3" style="background-color:rgb(0, 75, 93);">Update Employee</button>
                   </form>
+                  {% endif %}
               </div>
         </div>
 
@@ -79,10 +85,6 @@
                 <div class="circleright">
                 </div>
             </div>
-        </div>
- 
-        <div class="child child7 fixed-bottom" style="background-color:rgb(0, 75, 93); color:whitesmoke;">
-            <p class="p-3 text-center">copyright &copy; Developed and Designed by Gurupreeth Singh , Email :- igurupreeth@gmail.com</p>
         </div>
       </div>
 
