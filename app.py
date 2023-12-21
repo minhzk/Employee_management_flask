@@ -94,10 +94,39 @@ def singleemployeeprofile(empid):
     single_emp = emp_cur.fetchone()
     return render_template('singleemployeeprofile.html', user = user, single_emp = single_emp)
 
-@app.route('/updateemployee')
+@app.route('/fetchone/<int:empid>')
+def fetchone(empid):
+    user = get_current_user()
+    db = get_database()
+    emp_cur = db.execute('select * from emp where empid = ?', [empid])
+    single_emp = emp_cur.fetchone()
+    return render_template('updateemployee.html', user = user, single_emp = single_emp)
+
+
+@app.route('/updateemployee', methods = ['POST', 'GET'])
 def updateemployee():
     user = get_current_user()
+    if request.method == 'POST':
+        empid = request.form['empid']
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        address = request.form['address']
+        db = get_database()
+        db.execute('update emp set name= ?, email= ?, phone= ?, address= ? where empid= ?', [name, email, phone, address, empid])
+        db.commit()
+        return redirect(url_for('dashboard'))
     return render_template('updateemployee.html', user = user)
+
+@app.route('/deleteemployee/<int:empid>', methods = ['POST', 'GET'])
+def deleteemployee(empid):
+    user = get_current_user()
+    if request.method == 'GET':
+        db = get_database()
+        db.execute('delete from emp where empid = ?', [empid])
+        db.commit()
+        return redirect(url_for('dashboard'))
+    return render_template('dashboard.html', user = user)
 
 @app.route('/logout')
 def logout():
